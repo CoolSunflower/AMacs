@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "sdl.h": "c",
+        "stdio.h": "c",
+        "windows.h": "c",
+        "sdl_main.h": "c",
+        "sdl_stdinc.h": "c"
+    }
+}
