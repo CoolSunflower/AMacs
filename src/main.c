@@ -3,12 +3,12 @@
 #include<stdbool.h>
 
 // #include<windows.h>
-#include"src/include/SDL2/SDL.h"
+#include"include/SDL2/SDL.h"
 
 #define STB_IMAGE_IMPLEMENTATION
-#include "./src/stb/stb_image.h"
+#include "stb/stb_image.h"
 
-#include "./src/la/la.h"
+#include "la.h"
 
 #define FONT_WIDTH 128
 #define FONT_HEIGHT 64
