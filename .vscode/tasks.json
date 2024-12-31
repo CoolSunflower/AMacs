@@ -1,0 +1,17 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Build and Run",
+        "type": "shell",
+        "command": "make && ./amacs",
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "problemMatcher": [],
+        "detail": "Runs make and then executes ./te."
+      }
+    ]
+  }
+  
