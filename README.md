@@ -17,6 +17,8 @@ A Hobby Dramatic Text Editor
 ## Quick Start (Linux)
 
 ```console
-make
-./amacs
+./build.sh
+./build/amacs
 ```
+
+Or if you are using VSCode just press Ctrl + Shift + B.
