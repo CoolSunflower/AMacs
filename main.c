@@ -171,7 +171,7 @@ void bufferInsertTextBeforeCursor(const char *text){
         textSize = freeSpace;
     }
     // moving the existing content 
-    memmove(buffer + bufferCursor + textSize, buffer + bufferCursor, bufferSize-bufferCursor);
+    memmove(buffer + bufferCursor + textSize, buffer + bufferCursor, bufferSize - bufferCursor);
     memcpy(buffer + bufferCursor, text, textSize);
     bufferSize += textSize;
     bufferCursor += textSize;
@@ -193,7 +193,6 @@ void bufferDelete(void){
 }
 
 int main(int argc, char *argv[]) {
-    printf("Hello\n");
     scc(SDL_Init(SDL_INIT_VIDEO));
 
     SDL_Window *window = scp(SDL_CreateWindow("AMacs",20,20,800,600,SDL_WINDOW_RESIZABLE));
