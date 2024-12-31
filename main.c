@@ -14,8 +14,8 @@
 #define FONT_HEIGHT 64
 #define FONT_ROWS 7
 #define FONT_COLS 18
-#define FONT_CHAR_WIDTH (FONT_WIDTH / FONT_COLS)
-#define FONT_CHAR_HEIGHT (FONT_HEIGHT / FONT_ROWS)
+float FONT_CHAR_WIDTH = (float)FONT_WIDTH / (float)FONT_COLS;
+float FONT_CHAR_HEIGHT = (float) FONT_HEIGHT / (float) FONT_ROWS;
 #define FONT_SCALE 5.0f
 
 void scc(int code){
