@@ -2,8 +2,8 @@
 #include<stdlib.h>
 #include<stdbool.h>
 
-#include<windows.h>
-#include<SDL.h>
+// #include<windows.h>
+#include"src/include/SDL2/SDL.h"
 
 #define STB_IMAGE_IMPLEMENTATION
 #include "./src/stb/stb_image.h"
@@ -33,13 +33,13 @@ void *scp(void *ptr){
     return ptr;
 }
 
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd) {
-    (void) hInstance;
-    (void) hPrevInstance;
-    (void) lpCmdLine;
-    (void) nShowCmd;
-    return main(0, NULL);
-}
+// int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd) {
+//     (void) hInstance;
+//     (void) hPrevInstance;
+//     (void) lpCmdLine;
+//     (void) nShowCmd;
+//     return main(0, NULL);
+// }
 
 SDL_Surface * surfaceFromFile(const char *filePath){
     int width, height, n;
