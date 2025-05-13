@@ -192,14 +192,11 @@ int main(int argc, char *argv[]) {
                 case SDL_KEYDOWN : {
                     switch (event.key.keysym.sym){
                         case SDLK_BACKSPACE : {
-                            line_backspace(&line, cursor);
-                            if(cursor > 0){
-                                cursor--;
-                            }
+                            line_backspace(&line, &cursor);
                             break;
                         }
                         case SDLK_DELETE : {
-                            line_delete(&line, cursor);
+                            line_delete(&line, &cursor);
                             break;
                         }
                         case SDLK_LEFT : {
@@ -218,9 +215,7 @@ int main(int argc, char *argv[]) {
                 }
 
                 case SDL_TEXTINPUT : {
-                    line_insert_text_before_cursor(&line, event.text.text, cursor);
-                    printf("%zu %zu\n", line.size, line.capacity);
-                    cursor += strlen(event.text.text);
+                    line_insert_text_before_cursor(&line, event.text.text, &cursor);
                 } break;
             }
         }

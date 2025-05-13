@@ -1,7 +1,8 @@
-#include "buffer.h"
+#include "editor.h"
 #include <string.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <stdbool.h>
 
 #define LINE_INIT_CAPACITY 1024
 
@@ -26,35 +27,88 @@ static void line_grow(Line* line, size_t n){
     }
 }
 
-void line_insert_text_before_cursor(Line* line, const char *text, size_t col){
+void line_insert_text_before_cursor(Line* line, const char *text, size_t *col){
+    if (*col > line->size){
+        *col = line->size;
+    }
+
     size_t textSize = strlen(text);
     line_grow(line, textSize);
 
     // moving the existing content 
-    memmove(line->chars + col + textSize, 
-            line->chars + col, 
-            line->size - col);
+    memmove(line->chars + *col + textSize, 
+            line->chars + *col, 
+            line->size - *col);
 
     // prepend text
-    memcpy(line->chars + col, text, textSize);    
+    memcpy(line->chars + *col, text, textSize);    
     line->size += textSize;
+    *col += textSize;
 }
 
-void line_backspace(Line* line, size_t col){
-    if(col > 0 && line->size > 0){
-        memmove(line->chars + col - 1, 
-                line->chars + col, 
-                line->size - col);
+void line_backspace(Line* line, size_t *col){
+    if (*col > line->size){
+        *col = line->size;
+    }
+
+    if(*col > 0 && line->size > 0){
+        memmove(line->chars + *col - 1, 
+                line->chars + *col, 
+                line->size - *col);
+        line->size--;
+        *col = *col - 1;
+    }
+}
+
+void line_delete(Line* line, size_t *col){
+    if (*col > line->size){
+        *col = line->size;
+    }
+
+    if(*col < line->size && line->size > 0){
+        memmove(line->chars + *col, 
+                line->chars + *col + 1, 
+                line->size - *col);
         line->size--;
     }
 }
 
-void line_delete(Line* line, size_t col){
-    if(col < line->size && line->size > 0){
-        memmove(line->chars + col, 
-                line->chars + col + 1, 
-                line->size - col);
-        line->size--;
-    }
+void editor_push_new_line(Editor* editor){
+    assert(false && "TODO");
 }
 
+void editor_insert_text_before_cursor(Editor* editor, const char *text){
+    if(editor->cursor_row >= editor->size){
+        if(editor->size > 0){
+            editor->cursor_row = editor->size - 1;
+        }else{ // editor->size == 0
+            editor_push_new_line(editor);
+        }
+    }
+
+    line_insert_text_before_cursor(&editor->lines[editor->cursor_row], text, &editor->cursor_col);
+}
+
+void editor_backspace(Editor* editor){
+    if(editor->cursor_row >= editor->size){
+        if(editor->size > 0){
+            editor->cursor_row = editor->size - 1;
+        }else{ // editor->size == 0
+            editor_push_new_line(editor);
+        }
+    }
+
+    line_backspace(&editor->lines[editor->cursor_row], &editor->cursor_col);
+}
+
+void editor_delete(Editor* editor){
+    if(editor->cursor_row >= editor->size){
+        if(editor->size > 0){
+            editor->cursor_row = editor->size - 1;
+        }else{ // editor->size == 0
+            editor_push_new_line(editor);
+        }
+    }
+
+    line_delete(&editor->lines[editor->cursor_row], &editor->cursor_col);
+}
