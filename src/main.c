@@ -15,8 +15,8 @@
 #define FONT_HEIGHT 64
 #define FONT_ROWS 7
 #define FONT_COLS 18
-#define FONT_CHAR_WIDTH (FONT_WIDTH / FONT_COLS)
-#define FONT_CHAR_HEIGHT (FONT_HEIGHT / FONT_ROWS)
+float FONT_CHAR_WIDTH = (float)FONT_WIDTH / (float)FONT_COLS;
+float FONT_CHAR_HEIGHT = (float) FONT_HEIGHT / (float) FONT_ROWS;
 #define FONT_SCALE 5.0f
 
 void scc(int code){
@@ -34,13 +34,13 @@ void *scp(void *ptr){
     return ptr;
 }
 
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd) {
-    (void) hInstance;
-    (void) hPrevInstance;
-    (void) lpCmdLine;
-    (void) nShowCmd;
-    return main(0, NULL);
-}
+// int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd) {
+//     (void) hInstance;
+//     (void) hPrevInstance;
+//     (void) lpCmdLine;
+//     (void) nShowCmd;
+//     return main(0, NULL);
+// }
 
 SDL_Surface * surfaceFromFile(const char *filePath){
     int width, height, n;
@@ -172,7 +172,7 @@ void bufferInsertTextBeforeCursor(const char *text){
         textSize = freeSpace;
     }
     // moving the existing content 
-    memmove(buffer + bufferCursor + textSize, buffer + bufferCursor, bufferSize-bufferCursor);
+    memmove(buffer + bufferCursor + textSize, buffer + bufferCursor, bufferSize - bufferCursor);
     memcpy(buffer + bufferCursor, text, textSize);
     bufferSize += textSize;
     bufferCursor += textSize;
