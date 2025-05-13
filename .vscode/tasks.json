@@ -1,0 +1,30 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Build with cl.exe",
+        "type": "shell",
+        "command": "cl.exe",
+        "args": [
+          "/W4", "/WX", "/std:c11", "/wd4996", "/wd5105", "/FC", "/TC", "/Zi", "/nologo",
+          "/I", "dependencies\\SDL2\\include",
+          "/I", "dependencies\\GLFW\\include",
+          "/I", "dependencies\\GLEW\\include",
+          "/Feded", "-o", "build\\AMacs", "src\\main.c", "src\\la.c",
+          "/link",
+          "dependencies\\SDL2\\lib\\x64\\SDL2.lib",
+          "dependencies\\SDL2\\lib\\x64\\SDL2main.lib",
+          "dependencies\\GLFW\\lib\\glfw3.lib",
+          "dependencies\\GLEW\\lib\\glew32s.lib",
+          "opengl32.lib", "User32.lib", "Gdi32.lib", "Shell32.lib",
+          "-SUBSYSTEM:windows"
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "problemMatcher": []
+      }
+    ]
+  }
+  

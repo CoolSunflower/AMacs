@@ -1,6 +1,6 @@
 CC=gcc
-CFLAGS=-Wall -Wextra -std=c11 -pedantic -ggdb -Wno-unused-parameter
-LIBS=$(shell pkg-config --cflags --libs sdl2) -lm -mconsole
+CFLAGS=-Wall -Wextra -std=c11 -pedantic -ggdb -Wall
+LIBS=-IC:/msys64/mingw64/include/SDL2 -Dmain=SDL_main -lmingw32 -mwindows -lSDL2main -lSDL2 -lm -mconsole
 
-te: main.c
-	$(CC) -o te main.c ./src/la/la.c $(CFLAGS) $(LIBS) -msse3
+te: src/main.c
+	$(CC) -o amacs src/main.c src/la.c $(CFLAGS) $(LIBS) -msse3

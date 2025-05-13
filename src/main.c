@@ -1,14 +1,15 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<stdbool.h>
+#include<assert.h>
 
 #include<windows.h>
-#include<SDL.h>
+#include <SDL2/SDL.h>
 
 #define STB_IMAGE_IMPLEMENTATION
-#include "./src/stb/stb_image.h"
+#include "stb/stb_image.h"
 
-#include "./src/la/la.h"
+#include "la.h"
 
 #define FONT_WIDTH 128
 #define FONT_HEIGHT 64
@@ -193,11 +194,11 @@ void bufferDelete(void){
 }
 
 int main(int argc, char *argv[]) {
-    printf("Hello\n");
     scc(SDL_Init(SDL_INIT_VIDEO));
 
     SDL_Window *window = scp(SDL_CreateWindow("AMacs",20,20,800,600,SDL_WINDOW_RESIZABLE));
     SDL_Renderer *renderer = scp(SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED));
+
     // to enable drawing rectangles with transparency
     scc(SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND));
 

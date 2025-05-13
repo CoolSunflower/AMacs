@@ -4,6 +4,8 @@
         "stdio.h": "c",
         "windows.h": "c",
         "sdl_main.h": "c",
-        "sdl_stdinc.h": "c"
+        "sdl_stdinc.h": "c",
+        "stb_image.h": "c",
+        "la.h": "c"
     }
 }
