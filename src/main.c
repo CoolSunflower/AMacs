@@ -9,7 +9,7 @@
 #include "../dependencies/stb/stb_image.h"
 
 #include "la.h"
-#include "buffer.h"
+#include "editor.h"
 
 #define FONT_WIDTH 128
 #define FONT_HEIGHT 64

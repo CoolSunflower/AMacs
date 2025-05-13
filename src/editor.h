@@ -1,5 +1,5 @@
-#ifndef BUFFER_H_
-#define BUFFER_H_
+#ifndef EDITOR_H_
+#define EDITOR_H_
 
 #include <stdio.h>
 
@@ -13,4 +13,13 @@ void line_insert_text_before_cursor(Line* line, const char *text, size_t col);
 void line_backspace(Line* line, size_t col);
 void line_delete(Line* line, size_t col);
 
-#endif // BUFFER_H_
+typedef struct {
+    size_t capacity;
+    size_t size;
+    Line* lines;
+
+    size_t cursor_row;
+    size_t cursor_col;
+} Editor;
+
+#endif // EDITOR_H_
