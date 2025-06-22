@@ -175,6 +175,10 @@ SVDEF bool sv_try_chop_by_delim(String_View *sv, char delim, String_View *chunk)
             *chunk = result;
         }
         return true;
+    } else {
+        sv->count -= i;
+        sv->data  += i;
+        *chunk = result;
     }
 
     return false;

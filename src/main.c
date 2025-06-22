@@ -181,7 +181,11 @@ int main(int argc, char *argv[]) {
     }
 
     if (filePath){
-        editor_load_from_file(&editor, filePath);
+        FILE* f = fopen(filePath, "r");
+        if(f != NULL){
+            editor_load_from_file(&editor, f);
+            fclose(f);
+        }
     }
 
     scc(SDL_Init(SDL_INIT_VIDEO));
