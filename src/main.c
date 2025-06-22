@@ -153,8 +153,8 @@ void renderCursor(SDL_Renderer *renderer, Font *font){
     const SDL_Rect rect = {
         .x = (int) floorf(pos.x),
         .y = (int) floorf(pos.y),
-        .w = (int) FONT_CHAR_WIDTH * FONT_SCALE,
-        .h = (int) FONT_CHAR_HEIGHT * FONT_SCALE
+        .w = (int) (FONT_CHAR_WIDTH * FONT_SCALE),
+        .h = (int) (FONT_CHAR_HEIGHT * FONT_SCALE)
     };
 
     // draw the cursor
