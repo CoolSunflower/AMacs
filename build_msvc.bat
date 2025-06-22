@@ -9,4 +9,4 @@ set LIBS=dependencies\SDL2\lib\x64\SDL2.lib ^
          dependencies\GLEW\lib\glew32s.lib ^
          opengl32.lib User32.lib Gdi32.lib Shell32.lib
 
-cl.exe %CFLAGS% %INCLUDES% /Feded src\main.c src\editor.c /link %LIBS% -SUBSYSTEM:windows
+cl.exe %CFLAGS% %INCLUDES% /Feded src\main.c src\editor.c src\la.c /link %LIBS% -SUBSYSTEM:windows
