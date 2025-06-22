@@ -3,8 +3,8 @@
 #include<stdbool.h>
 #include<assert.h>
 
-#include <SDL2/SDL.h>
 #define SDL_DISABLE_IMMINTRIN_H
+#include <SDL2/SDL.h>
 #define STB_IMAGE_IMPLEMENTATION
 #include "../dependencies/stb/stb_image.h"
 
