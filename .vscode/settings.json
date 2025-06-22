@@ -8,6 +8,7 @@
         "stb_image.h": "c",
         "la.h": "c",
         "editor.h": "c",
-        "errno.h": "c"
+        "errno.h": "c",
+        "sv.h": "c"
     }
 }

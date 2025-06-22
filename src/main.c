@@ -207,7 +207,11 @@ int main(int argc, char *argv[]) {
                 case SDL_KEYDOWN : {
                     switch (event.key.keysym.sym){
                         case SDLK_F8: {
-                            editor_save_to_file(&editor, "output");
+                            if (filePath){
+                                editor_save_to_file(&editor, filePath);
+                            }else{
+                                editor_save_to_file(&editor, "output");
+                            }
                             break;
                         }
                         case SDLK_BACKSPACE : {
