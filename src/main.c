@@ -89,8 +89,8 @@ Font loadFontFromFile(const char* filePath, SDL_Renderer *renderer){
         const size_t row = index/FONT_COLS;
         const size_t col = index%FONT_COLS;
         SDL_Rect temp = {
-            .x = (int) col * FONT_CHAR_WIDTH,
-            .y = (int) row * FONT_CHAR_HEIGHT,
+            .x = (int) ((float)col * FONT_CHAR_WIDTH),
+            .y = (int) ((float)row * FONT_CHAR_HEIGHT),
             .w = (int) FONT_CHAR_WIDTH,
             .h = (int) FONT_CHAR_HEIGHT
         };
