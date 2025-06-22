@@ -5,6 +5,7 @@
 #include <stdbool.h>
 
 #define LINE_INIT_CAPACITY 1024
+#define EDITOR_INIT_CAPACITY 128
 
 static void line_grow(Line* line, size_t n){
     // n is the required new space
@@ -73,8 +74,31 @@ void line_delete(Line* line, size_t *col){
     }
 }
 
+static void editor_grow(Editor* editor, size_t n){
+    // n is the required new space
+    // increase capacity as long as needed to fit n
+
+    size_t newCapacity = editor->capacity;
+    assert(newCapacity >= editor->size); // to check proper initialisation
+
+    while (newCapacity - editor->size < n){ // check free space versus required space
+        if(newCapacity == 0){
+            newCapacity = EDITOR_INIT_CAPACITY;
+        }else{
+            newCapacity *= 2;
+        }
+    }
+
+    if(newCapacity != editor->capacity){
+        editor->lines = realloc(editor->lines, newCapacity * sizeof(Line));
+        editor->capacity = newCapacity;
+    }
+}
+
 void editor_push_new_line(Editor* editor){
-    assert(false && "TODO");
+    editor_grow(editor, 1);
+    memset(&editor->lines[editor->size], 0, sizeof(editor->lines[0]));
+    editor->size += 1;
 }
 
 void editor_insert_text_before_cursor(Editor* editor, const char *text){
@@ -111,4 +135,32 @@ void editor_delete(Editor* editor){
     }
 
     line_delete(&editor->lines[editor->cursor_row], &editor->cursor_col);
+}
+
+void editor_insert_new_line(Editor* editor){
+    if (editor->cursor_row > editor->size){
+        editor->cursor_row = editor->size;
+    }
+
+    editor_grow(editor, 1);
+
+    // moving the existing content 
+    const size_t line_size = sizeof(editor->lines[0]);
+    memmove(editor->lines + editor->cursor_row + 1, 
+            editor->lines + editor->cursor_row, 
+            (editor->size - editor->cursor_row)*line_size);
+    memset(&editor->lines[editor->cursor_row + 1], 0, line_size);
+    editor->cursor_row += 1;
+    editor->cursor_col = 0;
+    editor->size += 1;
+}
+
+const char *editor_char_under_cursor(const Editor* editor){
+    if (editor->cursor_row < editor->size){
+        if(editor->cursor_col < editor->lines[editor->cursor_row].size){
+            return &editor->lines[editor->cursor_row].chars[editor->cursor_col];
+        }
+    }
+
+    return NULL;
 }

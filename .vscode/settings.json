@@ -6,6 +6,7 @@
         "sdl_main.h": "c",
         "sdl_stdinc.h": "c",
         "stb_image.h": "c",
-        "la.h": "c"
+        "la.h": "c",
+        "editor.h": "c"
     }
 }
