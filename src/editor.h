@@ -29,3 +29,4 @@ void editor_insert_new_line(Editor* editor);
 const char *editor_char_under_cursor(const Editor* editor);
 
 #endif // EDITOR_H_
+
