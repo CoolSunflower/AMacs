@@ -179,20 +179,15 @@ void editor_save_to_file(const Editor* editor, const char* filePath){
 
     for(size_t row = 0; row < editor->size; ++row){
         fwrite(editor->lines[row].chars, 1, editor->lines[row].size, f);
-        fputc('\n', f);
+        if (row != (editor->size-1)) fputc('\n', f);
     }
 
     fclose(f);
 }
 
-void editor_load_from_file(Editor* editor, const char* filePath){
+void editor_load_from_file(Editor* editor, FILE* f){
     assert(editor->lines == NULL && "You can only load files into an empty editor");
     editor_create_first_new_line(editor);
-
-    FILE* f = fopen(filePath, "r");
-    if(f == NULL){
-        fprintf(stderr, "Error: could not open file %s: %s", filePath, strerror(errno));
-    }
 
     static char chunk[1024 * 640];
 
@@ -218,6 +213,4 @@ void editor_load_from_file(Editor* editor, const char* filePath){
     }
 
     editor->cursor_row = 0;
-
-    fclose(f);
 }
