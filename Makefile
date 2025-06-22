@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-Wall -Wextra -std=c11 -pedantic -ggdb -Wall -Wno-implicit-function-declaration -Wno-error=incompatible-pointer-types
+CFLAGS=-Wall -Wextra -std=c11 -pedantic -ggdb -Wall -Wno-implicit-function-declaration -Wno-error=incompatible-pointer-types -Wno-error
 LIBS=-I./dependencies/SDL2/include -L./dependencies/SDL2/lib -Dmain=SDL_main -lmingw32 -mwindows -lSDL2main -lSDL2 -lm -mconsole
 
 te: src/main.c
