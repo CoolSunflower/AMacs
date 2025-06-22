@@ -3,7 +3,7 @@ on: [push, pull_request]
 
 jobs:
   build-linux-gcc:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - name: install dependencies
@@ -16,7 +16,7 @@ jobs:
         env:
           CC: gcc
   build-linux-clang:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - name: install dependencies
