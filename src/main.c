@@ -169,9 +169,20 @@ void renderCursor(SDL_Renderer *renderer, Font *font){
     }
 }
 
+void usage(FILE* stream){
+    fprintf(stream, "Usage: amacs [FILE-PATH]");
+}
+
 int main(int argc, char *argv[]) {
-    (void) argc;
-    (void) argv;
+    const char* filePath = NULL;
+
+    if (argc > 1){
+        filePath = argv[1];
+    }
+
+    if (filePath){
+        editor_load_from_file(&editor, filePath);
+    }
 
     scc(SDL_Init(SDL_INIT_VIDEO));
 
@@ -255,3 +266,6 @@ int main(int argc, char *argv[]) {
     SDL_Quit();
     return 0;
 }
+
+#define SV_IMPLEMENTATION
+#include "./lib/sv.h"

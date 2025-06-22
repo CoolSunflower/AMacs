@@ -10,6 +10,9 @@ typedef struct {
 } Line;
 
 void line_insert_text_before_cursor(Line* line, const char *text, size_t *col);
+void line_insert_text_before_cursor_sized(Line* line, const char *text, size_t *col, size_t text_size);
+void line_append_text(Line* line, const char* text);
+void line_append_text_sized(Line* line, const char* text, size_t text_size);
 void line_backspace(Line* line, size_t *col);
 void line_delete(Line* line, size_t *col);
 
@@ -21,6 +24,7 @@ typedef struct {
     size_t cursor_col;
 } Editor;
 
+void editor_load_from_file(Editor* editor, const char* filePath);
 void editor_save_to_file(const Editor* editor, const char* filePath);
 void editor_insert_text_before_cursor(Editor* editor, const char *text);
 void editor_backspace(Editor* editor);
