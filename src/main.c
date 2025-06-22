@@ -242,7 +242,7 @@ int main(int argc, char *argv[]) {
 
         for(size_t row = 0; row < editor.size; ++row){
             const Line* line = &editor.lines[row];
-            renderTextSized(renderer, &font, line->chars, vec2f(0.0, row*FONT_CHAR_HEIGHT*FONT_SCALE), 0xFFFFFFFF, FONT_SCALE, line->size);
+            renderTextSized(renderer, &font, line->chars, vec2f(0.0, (float)row*FONT_CHAR_HEIGHT*FONT_SCALE), 0xFFFFFFFF, FONT_SCALE, line->size);
         }
         renderCursor(renderer, &font);
 

@@ -21,4 +21,9 @@ A Hobby Dramatic Text Editor
 ./build/amacs
 ```
 
-Or if you are using VSCode just press Ctrl + Shift + B.
+## Quick Start (Window)
+
+```console
+
+
+```
