@@ -90,8 +90,8 @@ Font loadFontFromFile(const char* filePath, SDL_Renderer *renderer){
         SDL_Rect temp = {
             .x = (int) col * FONT_CHAR_WIDTH,
             .y = (int) row * FONT_CHAR_HEIGHT,
-            .w = FONT_CHAR_WIDTH,
-            .h = FONT_CHAR_HEIGHT
+            .w = (int) FONT_CHAR_WIDTH,
+            .h = (int) FONT_CHAR_HEIGHT
         };
         font.glyphTable[index] = temp;
     }
@@ -152,8 +152,8 @@ void renderCursor(SDL_Renderer *renderer, Font *font){
     const SDL_Rect rect = {
         .x = (int) floorf(pos.x),
         .y = (int) floorf(pos.y),
-        .w = FONT_CHAR_WIDTH * FONT_SCALE,
-        .h = FONT_CHAR_HEIGHT * FONT_SCALE
+        .w = (int) FONT_CHAR_WIDTH * FONT_SCALE,
+        .h = (int) FONT_CHAR_HEIGHT * FONT_SCALE
     };
 
     // draw the cursor
