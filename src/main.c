@@ -3,7 +3,6 @@
 #include<stdbool.h>
 #include<assert.h>
 
-#include<windows.h>
 #include <SDL2/SDL.h>
 #define STB_IMAGE_IMPLEMENTATION
 #include "../dependencies/stb/stb_image.h"
@@ -89,8 +88,8 @@ Font loadFontFromFile(const char* filePath, SDL_Renderer *renderer){
         const size_t row = index/FONT_COLS;
         const size_t col = index%FONT_COLS;
         SDL_Rect temp = {
-            .x = col * FONT_CHAR_WIDTH,
-            .y = row * FONT_CHAR_HEIGHT,
+            .x = (int) col * FONT_CHAR_WIDTH,
+            .y = (int) row * FONT_CHAR_HEIGHT,
             .w = FONT_CHAR_WIDTH,
             .h = FONT_CHAR_HEIGHT
         };
@@ -170,6 +169,9 @@ void renderCursor(SDL_Renderer *renderer, Font *font){
 }
 
 int main(int argc, char *argv[]) {
+    (void) argc;
+    (void) argv;
+
     scc(SDL_Init(SDL_INIT_VIDEO));
 
     SDL_Window *window = scp(SDL_CreateWindow("AMacs",20,20,800,600,SDL_WINDOW_RESIZABLE));
