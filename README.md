@@ -24,6 +24,5 @@ A Hobby Dramatic Text Editor
 ## Quick Start (Window)
 
 ```console
-
-
+make
 ```
