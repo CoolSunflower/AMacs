@@ -16,7 +16,7 @@ jobs:
         env:
           CC: gcc
   build-linux-clang:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v1
       - name: install dependencies
@@ -59,9 +59,8 @@ jobs:
         run: |
           mkdir winbin
           copy /B *.exe winbin
-          copy /B *.png winbin
       - name: Upload WindowsBinaries artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: WindowsBinaries
           path: ./winbin/
