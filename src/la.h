@@ -14,3 +14,4 @@ Vec2f vec2f_div(Vec2f a, Vec2f b);
 double vec2f_len(Vec2f a);
 
 #endif // LA_H_
+
